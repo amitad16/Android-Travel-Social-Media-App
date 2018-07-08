@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="55dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:src="@drawable/instagram_logo"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_marginBottom="25dp"/>-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            android:text="Login"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:textColor="@color/lightBlack"/>
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:textAlignment="center"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:id="@+id/inputEmail"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="Password"
+                android:id="@+id/inputPassword"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="25dp"
+            android:text="Login"
+            android:id="@+id/btnLogin"
+            android:padding="12dp"
+            android:background="@drawable/white_rounded_button"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:text="No Account Yet? Create One"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:id="@+id/linkSignup"
+            android:textColor="@color/link_blue"/>
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/progressBar"
+            android:layout_below="@id/linkSignup"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

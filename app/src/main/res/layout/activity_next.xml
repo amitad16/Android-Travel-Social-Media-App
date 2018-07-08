@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_center_viewpager"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relLayout1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relLayout2">
+
+                    <!-- Toolbar -->
+                    <include layout="@layout/snippet_top_next_toolbar"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relLayout2"
+                    android:background="@drawable/grey_border_bottom"
+                    android:id="@+id/relLayout3">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:id="@+id/image_share"
+                        android:scaleType="centerCrop"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="40dp" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/image_share"
+                        android:layout_toEndOf="@id/image_share"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="20dp">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/caption"
+                            android:hint="@string/hint_write_a_description"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginStart="20dp"
+                            android:background="@null"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relLayout3"
+                    android:background="@color/white">
+
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lv_next_activity">
+                    </ListView>
+
+                </RelativeLayout>
+
+
+
+                <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/location"-->
+                <!--android:text="Location"-->
+                <!--android:textSize="@dimen/base_font_size"-->
+                <!--android:padding="@dimen/base_margin"-->
+                <!--android:layout_below="@id/relLayout3"/>-->
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="82dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
+            android:id="@+id/progress_image_share"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_size"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/grey_border_bottom">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/profile_tool_bar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_back_arrow"
+                    style="@style/TopBarLeftIcon"
+                    android:src="@drawable/ic_back_arrow" />
+
+                <TextView
+                    style="@style/TopBarText"
+                    android:text="Options"
+                    android:layout_toRightOf="@id/iv_back_arrow"
+                    android:layout_toEndOf="@id/iv_back_arrow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/string_share"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="@dimen/base_margin"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/base_font_size"
+                    android:textColor="@color/link_blue"
+                    android:id="@+id/tv_share"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+</merge>

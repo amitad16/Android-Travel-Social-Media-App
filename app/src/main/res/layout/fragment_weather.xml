@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relLayout1">
+
+        <include layout="@layout/snippet_top_weather"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:background="@drawable/transparent_gradient_weather"
+        android:id="@+id/relLayout2"
+        android:orientation="vertical"
+        android:layout_below="@id/relLayout1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="60">
+
+                    <ImageView
+                        android:id="@+id/ic_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_location"
+                        android:layout_marginTop="@dimen/base_margin"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lorem Ipsum"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:fontFamily="sans-serif-condensed"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:id="@+id/tv_location"
+                        android:layout_below="@id/ic_location"
+                        android:layout_marginTop="@dimen/base_margin"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tue 10 April 2018"
+                        android:textSize="@dimen/base_font_size"
+                        android:textAlignment="center"
+                        android:fontFamily="sans-serif-condensed"
+                        android:textColor="@color/grey"
+                        android:id="@+id/tv_date"
+                        android:layout_below="@id/tv_location"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/relLayout3"
+                        android:layout_below="@+id/tv_date"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/base_margin">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/relLayout4">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/ic_location"
+                                android:layout_marginTop="25dp"
+                                android:id="@+id/ic_weather"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="22"
+                                android:textSize="75sp"
+                                android:textColor="@color/white"
+                                android:fontFamily="sans-serif-condensed"
+                                android:layout_marginLeft="@dimen/base_margin"
+                                android:layout_marginStart="@dimen/base_margin"
+                                android:layout_toRightOf="@id/ic_weather"
+                                android:layout_toEndOf="@id/ic_weather" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/relLayout5"
+                            android:layout_below="@id/relLayout4"
+                            android:layout_centerHorizontal="true">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="33"
+                                android:id="@+id/max_temp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:textColor="@color/white"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" / "
+                                android:id="@+id/space"
+                                android:fontFamily="sans-serif-condensed"
+                                android:textColor="@color/white"
+                                android:layout_toRightOf="@id/max_temp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="19"
+                                android:id="@+id/min_temp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:textColor="@color/white"
+                                android:layout_toRightOf="@id/space"
+                                android:layout_toEndOf="@id/space" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rain"
+                            android:fontFamily="sans-serif-condensed"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:layout_marginTop="@dimen/base_margin"
+                            android:layout_centerHorizontal="true"
+                            android:id="@+id/weather_condition"
+                            android:layout_below="@id/relLayout5"/>
+
+                    </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="40">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20">
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20">
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20">
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20">
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20">
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

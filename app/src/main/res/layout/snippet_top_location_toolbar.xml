@@ -1,0 +1,41 @@
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/white_grey_border_bottom">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_tool_bar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    style="@style/TopBarLeftIcon"
+                    android:src="@drawable/ic_cross"
+                    android:id="@+id/back_to_account_settings" />
+
+                <TextView
+                    android:id="@+id/fragmentName"
+                    style="@style/TopBarText"
+                    android:text="Select A Location"
+                    android:layout_toRightOf="@id/back_to_account_settings"
+                    android:layout_toEndOf="@id/back_to_account_settings" />
+
+                <ImageView
+                    style="@style/TopBarRightIcon"
+                    android:src="@drawable/ic_check_blue"
+                    android:id="@+id/get_location" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+</merge>

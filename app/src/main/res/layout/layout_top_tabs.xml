@@ -1,0 +1,24 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_size"
+        android:layout_alignParentTop="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/grey_border_bottom">
+
+            </android.support.design.widget.TabLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+    </RelativeLayout>
+
+</merge>
