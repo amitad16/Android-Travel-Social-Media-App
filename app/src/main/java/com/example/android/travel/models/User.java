@@ -1,13 +1,10 @@
 package com.example.android.travel.models;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 /**
  * Created by user on 07-02-2018.
  */
 
-public class User implements Parcelable {
+public class User {
 
     private String user_id;
     private long phone_number;
@@ -23,25 +20,6 @@ public class User implements Parcelable {
 
     public User() {
     }
-
-    protected User(Parcel in) {
-        user_id = in.readString();
-        phone_number = in.readLong();
-        email = in.readString();
-        username = in.readString();
-    }
-
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
 
     public String getUser_id() {
         return user_id;
@@ -83,18 +61,5 @@ public class User implements Parcelable {
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 '}';
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(user_id);
-        parcel.writeLong(phone_number);
-        parcel.writeString(email);
-        parcel.writeString(username);
     }
 }

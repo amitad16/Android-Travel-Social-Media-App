@@ -3,8 +3,6 @@ package com.example.android.travel.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.List;
-
 /**
  * Created by user on 31-03-2018.
  */
@@ -12,42 +10,18 @@ import java.util.List;
 public class Photo implements Parcelable {
 
     private String caption, date_created, image_path, photo_id, user_id, tags;
-    private List<Likes> likes;
 
-    public Photo(String caption, String date_created, String image_path, String photo_id,
-                 String user_id, String tags, List<Likes> likes) {
+    public Photo(String caption, String date_created, String image_path, String photo_id, String user_id, String tags) {
         this.caption = caption;
         this.date_created = date_created;
         this.image_path = image_path;
         this.photo_id = photo_id;
         this.user_id = user_id;
         this.tags = tags;
-        this.likes = likes;
     }
 
     public Photo() {
     }
-
-    protected Photo(Parcel in) {
-        caption = in.readString();
-        date_created = in.readString();
-        image_path = in.readString();
-        photo_id = in.readString();
-        user_id = in.readString();
-        tags = in.readString();
-    }
-
-    public static final Creator<Photo> CREATOR = new Creator<Photo>() {
-        @Override
-        public Photo createFromParcel(Parcel in) {
-            return new Photo(in);
-        }
-
-        @Override
-        public Photo[] newArray(int size) {
-            return new Photo[size];
-        }
-    };
 
     public String getCaption() {
         return caption;
@@ -97,14 +71,6 @@ public class Photo implements Parcelable {
         this.tags = tags;
     }
 
-    public List<Likes> getLikes() {
-        return likes;
-    }
-
-    public void setLikes(List<Likes> likes) {
-        this.likes = likes;
-    }
-
     @Override
     public String toString() {
         return "Photo{" +
@@ -114,10 +80,8 @@ public class Photo implements Parcelable {
                 ", photo_id='" + photo_id + '\'' +
                 ", user_id='" + user_id + '\'' +
                 ", tags='" + tags + '\'' +
-                ", likes=" + likes +
                 '}';
     }
-
 
     @Override
     public int describeContents() {
@@ -126,11 +90,6 @@ public class Photo implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(caption);
-        parcel.writeString(date_created);
-        parcel.writeString(image_path);
-        parcel.writeString(photo_id);
-        parcel.writeString(user_id);
-        parcel.writeString(tags);
+
     }
 }

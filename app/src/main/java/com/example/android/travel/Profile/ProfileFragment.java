@@ -24,9 +24,7 @@ import com.example.android.travel.Utils.BottomNavigationViewHelper;
 import com.example.android.travel.Utils.FirebaseMethods;
 import com.example.android.travel.Utils.GridImageAdapter;
 import com.example.android.travel.Utils.UniversalImageLoader;
-import com.example.android.travel.models.Likes;
 import com.example.android.travel.models.Photo;
-import com.example.android.travel.models.User;
 import com.example.android.travel.models.UserAccountSettings;
 import com.example.android.travel.models.UserSettings;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,9 +38,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -72,7 +67,6 @@ public class ProfileFragment extends Fragment {
     private DatabaseReference myRef;
     private FirebaseMethods mFirebaseMethods;
 
-    // widgets
     private TextView posts, followers, following, displayName, username, location;
     private ProgressBar progressBar;
     private CircleImageView profilePhoto;
@@ -80,13 +74,6 @@ public class ProfileFragment extends Fragment {
     private Toolbar toolbar;
     private ImageView profileMenu;
     private BottomNavigationViewEx bottomNavigationViewEx;
-
-    // vars
-    private User user;
-    private int followersCount = 0;
-    private int followingCount = 0;
-    private int postCount = 0;
-
 
     @Nullable
     @Override
@@ -117,10 +104,6 @@ public class ProfileFragment extends Fragment {
 
         setupFirebaseAuth();
         setupGridView();
-
-        getFollowingCount();
-        getFollowersCount();
-        getPostsCount();
 
 //        Button editProfile = view.findViewById(R.id.btnEditProfile);
 //        editProfile.setOnClickListener(new View.OnClickListener() {
@@ -160,32 +143,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
-//                    photos.add(singleSnapshot.getValue(Photo.class));
-                    Photo photo = new Photo();
-                    Map<String, Object> objectMap = (HashMap<String, Object>) singleSnapshot.getValue();
-
-                    try {
-                        photo.setCaption(objectMap.get(getString(R.string.field_caption)).toString());
-                        photo.setTags(objectMap.get(getString(R.string.field_tags)).toString());
-                        photo.setPhoto_id(objectMap.get(getString(R.string.field_photo_id)).toString());
-                        photo.setUser_id(objectMap.get(getString(R.string.field_user_id)).toString());
-                        photo.setDate_created(objectMap.get(getString(R.string.field_date_created)).toString());
-                        photo.setImage_path(objectMap.get(getString(R.string.field_image_path)).toString());
-
-                        List<Likes> likesList = new ArrayList<>();
-                        for (DataSnapshot ds : singleSnapshot
-                                .child(getString(R.string.field_likes)).getChildren()) {
-                            Likes likes = new Likes();
-                            likes.setUser_id(ds.getValue(Likes.class).getUser_id());
-                            likesList.add(likes);
-                        }
-
-                        photo.setLikes(likesList);
-                        photos.add(photo);
-                    } catch (NullPointerException e) {
-                        Log.e(TAG, "onDataChange: NullPointerException: " + e.getMessage());
-                    }
-
+                    photos.add(singleSnapshot.getValue(Photo.class));
                 }
 
                 // Setup image grid
@@ -228,6 +186,9 @@ public class ProfileFragment extends Fragment {
         displayName.setText(settings.getDisplay_name());
         username.setText(settings.getUsername());
         location.setText(settings.getLocation());
+        posts.setText(String.valueOf(settings.getPosts()));
+        followers.setText(String.valueOf(settings.getFollowes()));
+        following.setText(String.valueOf(settings.getFollowing()));
         progressBar.setVisibility(View.GONE);
     }
 
@@ -246,78 +207,6 @@ public class ProfileFragment extends Fragment {
                 Log.d(TAG, "onClick: Navigating to account settings.");
                 Intent intent = new Intent(context, AccountSettingsActivity.class);
                 startActivity(intent);
-            }
-        });
-    }
-
-    private void getFollowersCount() {
-        Log.d(TAG, "getFollowersCount: getting number of followers");
-        followersCount = 0;
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        Query query = reference.child(getString(R.string.dbname_followers))
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot singleSnapshot :  dataSnapshot.getChildren()){
-                    Log.d(TAG, "onDataChange: found follower:" + singleSnapshot.getValue());
-                    followersCount++;
-                }
-                followers.setText(String.valueOf(followersCount));
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void getFollowingCount() {
-        Log.d(TAG, "getFollowingCount: getting number of following");
-        followingCount = 0;
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        Query query = reference.child(getString(R.string.dbname_following))
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot singleSnapshot :  dataSnapshot.getChildren()){
-                    Log.d(TAG, "onDataChange: found following: " + singleSnapshot.getValue());
-                    followingCount++;
-                }
-                following.setText(String.valueOf(followingCount));
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void getPostsCount() {
-        Log.d(TAG, "getPostsCount: getting number of posts");
-        postCount = 0;
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        Query query = reference.child(getString(R.string.dbname_user_photos))
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot singleSnapshot :  dataSnapshot.getChildren()){
-                    Log.d(TAG, "onDataChange: found post count :" + singleSnapshot.getValue());
-                    postCount++;
-                }
-                posts.setText(String.valueOf(postCount));
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }

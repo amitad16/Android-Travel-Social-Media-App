@@ -16,10 +16,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <!--<de.hdodenhof.circleimageview.CircleImageView-->
-                    <!--android:id="@+id/top_bar_profile_image"-->
-                    <!--style="@style/TopBarLeftIcon"-->
-                    <!--android:src="@drawable/profile_image"/>-->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/top_bar_profile_image"
+                    style="@style/TopBarLeftIcon"
+                    android:src="@drawable/profile_image"/>
 
                 <TextView
                     android:text="sdfsdf"
@@ -28,7 +28,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:textSize="@dimen/toolbar_font_size"
-                    android:textColor="@color/lightBlack" />
+                    android:textColor="@color/lightBlack"
+                    android:layout_toRightOf="@id/top_bar_profile_image"
+                    android:layout_toEndOf="@id/top_bar_profile_image" />
 
                 <ImageView
                     android:id="@+id/profile_menu"

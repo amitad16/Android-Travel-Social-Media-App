@@ -21,11 +21,11 @@ public class LikesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_weather);
+        setContentView(R.layout.activity_home);
         Log.d(TAG, "onCreate: Likes Activity Started");
         context = LikesActivity.this;
 
-//        setupBottomNavigationView();
+        setupBottomNavigationView();
     }
 
     /**

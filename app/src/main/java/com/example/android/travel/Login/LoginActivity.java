@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d(TAG, "onClick: attempting to login");
 
-                String inputEmail = email.getText().toString().trim();
+                String inputEmail = email.getText().toString();
                 String inputPassword = password.getText().toString();
 
                 if (isStringNull(inputEmail) || isStringNull(inputPassword)) {

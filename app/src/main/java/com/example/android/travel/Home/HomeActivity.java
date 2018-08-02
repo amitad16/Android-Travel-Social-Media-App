@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import com.example.android.travel.Login.LoginActivity;
 import com.example.android.travel.R;
 import com.example.android.travel.Utils.BottomNavigationViewHelper;
-import com.example.android.travel.Utils.MainfeedListAdapter;
 import com.example.android.travel.Utils.SectionPagerAdapter;
 import com.example.android.travel.Utils.UniversalImageLoader;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,31 +21,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class HomeActivity extends AppCompatActivity implements
-        MainfeedListAdapter.OnLoadMoreItemsListener {
-
-    @Override
-    public void onLoadMoreItems() {
-        Log.d(TAG, "onLoadMoreItems: displaying more photos");
-
-        HomeFragment fragment = (HomeFragment)getSupportFragmentManager()
-                .findFragmentByTag("android:switcher:" + R.id.container + ":" + mViewPager.getCurrentItem());
-        if(fragment != null){
-            fragment.displayMorePhotos();
-        }
-    }
+public class HomeActivity extends AppCompatActivity {
 
     private static final String TAG = "HomeActivity";
     private Context context;
     private static final int ACTIVITY_NUM = 0;
-    public static final int HOME_FRAGMENT = 1;
 
     // Firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
-    //widgets
-    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +37,6 @@ public class HomeActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_home);
 
         context = HomeActivity.this;
-        mViewPager = findViewById(R.id.container);
         setupFirebaseAuth();
 
         initImageLoader();
@@ -149,7 +131,6 @@ public class HomeActivity extends AppCompatActivity implements
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
-        mViewPager.setCurrentItem(HOME_FRAGMENT);
         checkCurrentUser(mAuth.getCurrentUser());
     }
 
@@ -160,4 +141,5 @@ public class HomeActivity extends AppCompatActivity implements
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
+
 }

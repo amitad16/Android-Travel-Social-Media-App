@@ -53,11 +53,6 @@ public class UniversalImageLoader {
 
     public static void setImage(String imgURL, ImageView image, final ProgressBar progressBar, String append) {
         Log.d(TAG, "setImage: ");
-//        try {
-//
-//        } catch (NullPointerException e) {
-//
-//        }
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(append + imgURL, image, new ImageLoadingListener() {
             @Override
